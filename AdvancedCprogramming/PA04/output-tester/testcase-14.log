@@ -1,0 +1,12 @@
+
+/**
+ * Testcase 13 :: images/04-nelsonmandela.ee264 
+ * Test reading ee264 format
+ */
+Attempt to read 'images/04-nelsonmandela.ee264' as .ee264 format
+Success.
+Writing out 'student-out-13_04-nelsonmandela.bmp' in .bmp format
+Comparing student-out-13_04-nelsonmandela.bmp with expected output: 
+./diff-plus student-out-13_04-nelsonmandela.bmp images/bmps/04-nelsonmandela.bmp
+Match.
+Testcase passed.

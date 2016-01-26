@@ -1,0 +1,109 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+#include <math.h>
+#include "answer08.h"
+
+uint128 alphaTou128(const char * str)
+{
+	if(str==NULL)	// if str is NULL, return 0
+		return 0;
+	uint128 ans = 0;
+	int i = 0;
+	while(str[i]!='\0')	// run until end of string
+	{
+		if(str[i]=='-')
+			return 0;
+		if(str[i] >= '0' && str[i] <= '9')
+			ans = ans*10 + (str[i] - '0');
+		++i;
+	}
+	return ans;
+}
+
+char * u128ToString(uint128 value)
+{
+	uint128 value2 = value;
+	unsigned int length = 0;	// start with 1 so that there is space for '\0' character
+	do{
+		++length;
+		value2/= 10;
+	}while(value2 != 0);
+	
+	char *str = malloc(sizeof(char)*(length+1));
+	if(str==NULL)
+		return NULL;
+
+	int i;
+	for(i = 0; i < length; ++i)
+	{
+		str[length - i - 1] = value%10 + '0';
+		value/=10;
+	}
+	str[length] = '\0';
+	return str;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+typedef struct
+{
+	uint128 low;
+	uint128 high;
+	uint128 value;
+	int *flag;
+}ThreadData;
+
+void * thread_fn(void *arg)
+{
+	ThreadData *td = (ThreadData *)arg;
+	uint128 i = td->low;
+	while(i <= td->high)
+	{
+		if(td->value % i == 0)
+		{
+			*(td->flag) = FALSE;
+		}
+		i+=2;
+	}
+	return;
+}
+
+int primalityTestParallel(uint128 value, int n_threads)
+{
+
+	if(value <= 1)
+		return FALSE;
+	else if(value == 2)
+		return TRUE;
+	else if( (value % 10) % 2 == 0 )
+		return FALSE;
+	else if( value == 3)
+		return TRUE;
+		
+	int answer = TRUE;
+	pthread_t *thread = malloc(sizeof(pthread_t)*n_threads);
+	ThreadData *td = malloc(sizeof(ThreadData)*n_threads);
+	
+	int i;
+	uint128 range = sqrt(value)/n_threads;
+	if(range%2==1)
+		range++;
+	for(i = 0; i < n_threads; ++i)	// loop to set ThreadData
+	{
+		td[i].flag  = &answer;
+		td[i].value = value;
+		td[i].low   = 3 + i*(range);
+		td[i].high  = td[i].low + (range);
+	}
+	
+	for(i = 0; i < n_threads; ++i)	// loop to call threads
+		pthread_create( &thread[i], NULL, &thread_fn, &td[i] );
+	
+	for(i = 0; i < n_threads; ++i)	// loop to join the thread
+		pthread_join(thread[i], NULL);
+	
+	free(td);		// free thread data
+	free(thread);	// free the threads
+	
+	return answer;

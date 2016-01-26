@@ -1,0 +1,11 @@
+
+Testcase 35
+   Testing: SparseNode_getMin(a5)
+   Built array a5:
+   (1,5)->(10,3)->(25,3)
+                        ->(11,-4)
+                ->(8,4)
+                       ->(4,-30)->(7,20)
+   Student getMin: 1
+   Solution getMin: 1
+Pass.

@@ -1,0 +1,17 @@
+Can't find member of namespace, class, struct, or union named "pa01.c"
+Hint: try 'pa01.c<TAB> or 'pa01.c<ESC-?>
+(Note leading single quote.)
+Make breakpoint pending on future shared library load? (y or [n]) Please answer y or [n].
+Make breakpoint pending on future shared library load? (y or [n]) No source file named pa01.cc.
+Make breakpoint pending on future shared library load? (y or [n]) Breakpoint 1 at 0x400784: file pa01.c, line 59.
+Starting program: /home/shay/a/verma24/ECE264/Summer2014/PA01/pa01 
+
+Breakpoint 1, test_00_arraySum () at pa01.c:59
+59	}
+No symbol "argc" in current context.
+main (argc=1, argv=0x7fffffffe498) at pa01.c:179
+179	     test_01_arrayCountNegative();
+180	     test_02_arrayFindSmallest();
+Continuing.
+
+Program exited normally.

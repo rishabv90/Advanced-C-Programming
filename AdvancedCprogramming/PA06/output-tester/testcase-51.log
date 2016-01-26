@@ -1,0 +1,9 @@
+
+Testcase 51
+   Testing: SparseNode_getNode(a7)
+   Built array a7:
+   Find Node with index 49:
+   Student  getNode returned NULL
+   Solution getNode returned NULL
+   Checking if node is the same...
+Pass.

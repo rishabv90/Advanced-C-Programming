@@ -1,0 +1,21 @@
+
+Testcase 54
+   Testing: SparseNode_remove(a2)
+   Built array a2:
+   (50,4)->(75,-3)->(80,-30)
+                  ->(60,-7)
+         ->(25,7)->(30,80)
+                 ->(12,9)
+   Remove Node with index 4:
+   Student result after remove:
+   (50,4)->(75,-3)->(80,-30)
+                  ->(60,-7)
+         ->(25,7)->(30,80)
+                 ->(12,9)
+   Solution result after remove:
+   (50,4)->(75,-3)->(80,-30)
+                  ->(60,-7)
+         ->(25,7)->(30,80)
+                 ->(12,9)
+   Checking if result tree is the same...
+Pass.

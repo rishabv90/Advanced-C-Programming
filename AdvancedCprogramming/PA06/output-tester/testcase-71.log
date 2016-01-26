@@ -1,0 +1,33 @@
+
+Testcase 71
+   Testing: SparseNode_merge(a3)
+   Built array_1 a3:
+   (30,30)->(40,2)->(50,3)->(60,7)->(70,30)->(80,80)->(90,-70)
+          ->(28,-300)
+                     ->(25,10)
+                              ->(22,200)
+                                        ->(9,22)
+                                                ->(6,10)
+                                                        ->(0,65)
+   Built array_2 a7:
+   Merge Node:
+   Student result after merge:
+   (30,30)->(40,2)->(50,3)->(60,7)->(70,30)->(80,80)->(90,-70)
+          ->(28,-300)
+                     ->(25,10)
+                              ->(22,200)
+                                        ->(9,22)
+                                                ->(6,10)
+                                                        ->(0,65)
+   Solution result after merge:
+   (30,30)->(40,2)->(50,3)->(60,7)->(70,30)->(80,80)->(90,-70)
+          ->(28,-300)
+                     ->(25,10)
+                              ->(22,200)
+                                        ->(9,22)
+                                                ->(6,10)
+                                                        ->(0,65)
+   Checking if result tree is the same...
+   Memory errors detected.
+   Valgrind log saved in output-tester/testcase-71.memcheck.log.
+Testcase FAILED. Log file saved to testcase-71.log

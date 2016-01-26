@@ -1,0 +1,76 @@
+==30121== Memcheck, a memory error detector
+==30121== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==30121== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==30121== Command: ./a.out images/05-sagan-stamp.ee264 student-out-14_05-sagan-stamp.bmp
+==30121== Parent PID: 30120
+==30121== 
+--30121-- 
+--30121-- Valgrind options:
+--30121--    --tool=memcheck
+--30121--    --leak-check=full
+--30121--    --verbose
+--30121--    --log-file=memcheck-14.log
+--30121-- Contents of /proc/version:
+--30121--   Linux version 2.6.32-504.23.4.el6.x86_64 (mockbuild@x86-029.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-9) (GCC) ) #1 SMP Fri May 29 10:16:43 EDT 2015
+--30121-- Arch and hwcaps: AMD64, amd64-sse3-cx16-avx
+--30121-- Page sizes: currently 4096, max supported 4096
+--30121-- Valgrind library directory: /usr/lib64/valgrind
+--30121-- Reading syms from /tmp/.Lip804/a.out
+--30121-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--30121--    object doesn't have a dynamic symbol table
+--30121-- Reading syms from /lib64/ld-2.12.so
+--30121--   Considering /usr/lib/debug/.build-id/5b/eb2450b75e84ff317c65f22af8b8112c25df63.debug ..
+--30121--   .. build-id is valid
+--30121-- Scheduler: using generic scheduler lock implementation.
+--30121-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==30121== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-30121-by-verma24-on-ecegrid-thin5.ecn.purdue.edu
+==30121== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-30121-by-verma24-on-ecegrid-thin5.ecn.purdue.edu
+==30121== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-30121-by-verma24-on-ecegrid-thin5.ecn.purdue.edu
+==30121== 
+==30121== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==30121== don't want to do, unless you know exactly what you're doing,
+==30121== or are doing some strange experiment):
+==30121==   /usr/lib64/valgrind/../../bin/vgdb --pid=30121 ...command...
+==30121== 
+==30121== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==30121==   /path/to/gdb ./a.out
+==30121== and then give GDB the following command
+==30121==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=30121
+==30121== --pid is optional if only one valgrind process is running
+==30121== 
+--30121-- REDIR: 0x368b8176d0 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--30121-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--30121-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--30121-- REDIR: 0x368b8174e0 (index) redirected to 0x4a07c30 (index)
+--30121-- REDIR: 0x368b817560 (strcmp) redirected to 0x4a08570 (strcmp)
+--30121-- Reading syms from /lib64/libc-2.12.so
+--30121--   Considering /usr/lib/debug/.build-id/c7/df056b7c109a41096296cd70702f2eada124b0.debug ..
+--30121--   .. build-id is valid
+--30121-- REDIR: 0x368bc84cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--30121-- REDIR: 0x368bc86f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--30121-- REDIR: 0x368bc82c40 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
+--30121-- REDIR: 0x368bc7f6e0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--30121-- REDIR: 0x368bd28350 (__strcmp_sse42) redirected to 0x4a084d0 (strcmp)
+--30121-- REDIR: 0x368bc81120 (strlen) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--30121-- REDIR: 0x368bd33620 (__strlen_sse42) redirected to 0x4a07f90 (strlen)
+--30121-- REDIR: 0x368bc8aaf0 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
+--30121-- REDIR: 0x368bc84500 (mempcpy) redirected to 0x4a0a020 (mempcpy)
+--30121-- REDIR: 0x368bc7b520 (free) redirected to 0x4a063a9 (free)
+--30121-- REDIR: 0x368bc7a640 (malloc) redirected to 0x4a069ac (malloc)
+--30121-- REDIR: 0x368bc89670 (memcpy) redirected to 0x4a08b60 (memcpy)
+--30121-- REDIR: 0x368bc81160 (__GI_strlen) redirected to 0x4a07fb0 (__GI_strlen)
+--30121-- REDIR: 0x368bc839a0 (memset) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--30121-- REDIR: 0x368bc839e0 (__GI_memset) redirected to 0x4a09a50 (memset)
+==30121== 
+==30121== HEAP SUMMARY:
+==30121==     in use at exit: 0 bytes in 0 blocks
+==30121==   total heap usage: 6 allocs, 6 frees, 78,941 bytes allocated
+==30121== 
+==30121== All heap blocks were freed -- no leaks are possible
+==30121== 
+==30121== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
+--30121-- 
+--30121-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--30121-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==30121== 
+==30121== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)

@@ -1,0 +1,9 @@
+
+Testcase 67
+   Testing: SparseNode_copy(a7)
+   Built array a7:
+   Copy Node:
+   Student result after copy:
+   Solution result after copy:
+   Checking if result tree is the same...
+Pass.

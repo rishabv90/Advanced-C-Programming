@@ -1,0 +1,11 @@
+
+/**
+ * Testcase 21 :: images/corrupt-testcases/07-comment-has-no-null-byte.ee264 
+ * Comment (in file) does not end with a null-byte, which can cause serious problems. (Image_load should return NULL.)
+ */
+
+9Last value is NOT null character in commentError: failed to read 'images/corrupt-testcases/07-comment-has-no-null-byte.ee264'
+Attempt to read 'images/corrupt-testcases/07-comment-has-no-null-byte.ee264' as .ee264 format
+   Memory errors detected.
+   Valgrind log saved in output-tester/testcase-22.memcheck.log.
+Image_load(...) correctly returns NULL on corrupt image

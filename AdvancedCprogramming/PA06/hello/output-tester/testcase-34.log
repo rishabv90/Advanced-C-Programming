@@ -1,0 +1,14 @@
+
+Testcase 34
+   Testing: SparseNode_getMin(a4)
+   Built array a4:
+   (20,59)->(30,3)
+                  ->(25,100)
+          ->(8,-3)->(19,5)
+                          ->(18,2)
+                                  ->(17,7)
+                                          ->(15,-3)->(16,4)
+                  ->(6,20)
+   Student getMin: 0
+   Solution getMin: 6
+Testcase FAILED. Log file saved to testcase-34.log

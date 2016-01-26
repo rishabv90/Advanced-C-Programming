@@ -1,0 +1,13 @@
+
+Testcase 50
+   Testing: SparseNode_getNode(a6)
+   Built array a6:
+   (100,50)->(120,4)
+           ->(36,33)
+                    ->(0,3)->(12,100)
+                                    ->(9,-6)
+   Find Node with index 36:
+   Student  getNode index: 36, value: 33
+   Solution getNode index: 36, value: 33
+   Checking if node is the same...
+Pass.

@@ -1,0 +1,186 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include "answer02.h"
+
+char * strcat_ex(char * * dest, int * n, const char * src)
+{
+  //CHeck if big enough, if not allocate a new larger one and copy old string to the new buffer, then free old buffer.
+   
+  if (*dest == NULL)//no guarentee of value of N
+    {
+      //printf("helloo1\n");
+       char * buffer =  malloc((sizeof(char)) * (1 + 2 * strlen(src)));
+       *n =(1 + 2 * strlen(src));
+       *dest = buffer;
+       //NO NEED TO free
+       strcat(*dest, " ");
+       strcat(*dest, src);
+      return (*dest);
+    }
+
+  else if(*n < (strlen(*dest) + strlen(src)))
+    {
+      //printf("helloo2\n");
+	  
+       char * buffer = malloc((sizeof(char))* (1 + 2 * (strlen(*dest) + strlen(src))));
+       *n = 1 + 2 * (strlen(*dest) + strlen(src));
+       strcpy(buffer, *dest);
+       free(*dest);
+       *dest = buffer;       
+       strcat(*dest, " ");
+       strcat(*dest, src);
+       return (*dest);
+    }
+	else 
+	  {
+	    // printf("helloo3\n");
+	    strcat(*dest, " ");
+	    strcat(*dest, src);
+	    return(*dest);
+	  }
+	return (* dest);
+}
+
+
+char * * explode(const char * str, const char * delims, int * arrLen)
+{
+  int i = 0;
+  int j = 0;
+  //int length = 0;
+  
+   // printf("the String is : %s\n", str);
+   //length = strlen(str);
+  
+   while(str[i] != '\0')
+     {
+       if(strchr(delims, str[i]) != NULL)//checking for null
+	 {
+	   j++;
+	 }
+       i++;
+   }
+   
+   *arrLen = j+1;//gives us the number of strings
+   
+
+   char * *strArr = (char * *)malloc((*arrLen) * sizeof(char*));
+
+   int counter = 0;
+   int end = 0;
+
+  int k = 0;
+
+   int strArr_k = 0;
+   
+   while(k <= strlen(str))
+     {
+       if((strchr(delims,str[k]) != NULL) || (str[k] == '\0'))
+	 {
+	   strArr[strArr_k] = (char*)malloc((counter + 1) * sizeof(char));
+	   //???????
+	   memcpy(strArr[strArr_k], &str[end], k - (end -1));
+	   //printf("HERERERE");	   
+	   strArr[strArr_k][k - end] = '\0';
+	   end = k + 1;
+	   counter = 0;
+	   //pritnf("here");
+	   strArr_k++;
+	 }
+       else
+	 {
+	   counter++;
+	 }
+       k++;
+     }
+
+   
+   
+   
+   //const char ch;
+
+   // printf("the delims are : %s\n", delims);
+   
+     // printf("the string is :%d\n", i);
+  
+  
+
+   return (strArr);
+}
+
+
+char * implode(char * * strArr, int len, const char * glue)
+{
+  int i = 0;
+  int sum = 0;
+   int j = 1;
+  
+  for(i = 0; i < len ; i++)
+    {
+      //printf("here")
+      sum = sum + strlen(strArr[i]);
+    }
+  sum = sum + (((len -1) * strlen(glue)) + 1);
+  char * i_string = malloc(sizeof(char) * sum); // creating string for implode
+  
+  strcpy(i_string, strArr[0]);
+  
+  while(j < len)
+    {
+      strcat(i_string, glue);
+      strcat(i_string, strArr[j]);
+      j++;
+    }
+  
+  return(i_string);
+  
+
+}
+
+int cmpfunc1(const void * one, const void * two)
+{
+  char const * * one_1 = (char const **)one;
+  char const * * two_2 = (char const **)two;
+  return strcmp(*one_1, *two_2);
+}
+
+void sortStringArray(char * * arrString, int len)
+{
+  // printf("here\n");
+  // printf("the string is : %s", arrString);
+  qsort(arrString, len, sizeof(char*), cmpfunc1);
+
+  
+}
+
+int cmpfunc2(void* a, void* b)
+{
+  return(strcmp((char const *)a, (char const *)b));
+}
+
+void sortStringCharacters(char * str)
+{
+  //printf("%s\n", str);
+  //printf("blah\n");
+  //int length = strlen(str);
+
+  // printf("the length is  : %d", length);
+  
+  qsort((void *)str, strlen(str), sizeof(char), cmpfunc2);
+  
+}
+
+
+void destroyStringArray(char * * strArr, int len)
+{
+  int i;
+  
+  for (i=0; i < len ; i++)
+    {
+      free(strArr[i]);
+    }
+  free(strArr);
+  
+}
+
+

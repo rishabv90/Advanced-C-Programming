@@ -1,0 +1,26 @@
+
+Testcase 72
+   Testing: SparseNode_merge(a4)
+   Built array_1 a0:
+   (1,5)->(3,3)->(8,4)
+        ->(0,6)
+   Built array_2 a1:
+   (4,20)->(40000,3)
+                    ->(6,5)->(30,-7)
+         ->(2,22)
+                 ->(0,100)->(1,-30)
+   Merge Node:
+   Student result after merge:
+   (1,-25)->(3,3)->(8,4)->(40000,3)
+                                   ->(30,-7)
+                        ->(4,20)->(6,5)
+                 ->(2,22)
+          ->(0,106)
+   Solution result after merge:
+   (1,-25)->(3,3)->(8,4)->(30,-7)->(40000,3)
+                        ->(6,5)
+                               ->(4,20)
+                 ->(2,22)
+          ->(0,106)
+   Checking if result tree is the same...
+Pass.

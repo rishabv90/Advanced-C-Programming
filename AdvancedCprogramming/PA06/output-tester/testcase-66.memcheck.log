@@ -1,0 +1,541 @@
+==47419== Memcheck, a memory error detector
+==47419== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==47419== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==47419== Command: ./a.out 65
+==47419== Parent PID: 47417
+==47419== 
+--47419-- 
+--47419-- Valgrind options:
+--47419--    --tool=memcheck
+--47419--    --leak-check=full
+--47419--    --verbose
+--47419--    --log-file=memcheck.log
+--47419-- Contents of /proc/version:
+--47419--   Linux version 2.6.32-504.23.4.el6.x86_64 (mockbuild@x86-029.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-9) (GCC) ) #1 SMP Fri May 29 10:16:43 EDT 2015
+--47419-- Arch and hwcaps: AMD64, amd64-sse3-cx16-avx
+--47419-- Page sizes: currently 4096, max supported 4096
+--47419-- Valgrind library directory: /usr/lib64/valgrind
+--47419-- Reading syms from /tmp/.HwkdOd/a.out
+--47419-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--47419--    object doesn't have a dynamic symbol table
+--47419-- Reading syms from /lib64/ld-2.12.so
+--47419--   Considering /usr/lib/debug/.build-id/5b/eb2450b75e84ff317c65f22af8b8112c25df63.debug ..
+--47419--   .. build-id is valid
+--47419-- Scheduler: using generic scheduler lock implementation.
+--47419-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==47419== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-47419-by-verma24-on-ecegrid-thin5.ecn.purdue.edu
+==47419== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-47419-by-verma24-on-ecegrid-thin5.ecn.purdue.edu
+==47419== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-47419-by-verma24-on-ecegrid-thin5.ecn.purdue.edu
+==47419== 
+==47419== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==47419== don't want to do, unless you know exactly what you're doing,
+==47419== or are doing some strange experiment):
+==47419==   /usr/lib64/valgrind/../../bin/vgdb --pid=47419 ...command...
+==47419== 
+==47419== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==47419==   /path/to/gdb ./a.out
+==47419== and then give GDB the following command
+==47419==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=47419
+==47419== --pid is optional if only one valgrind process is running
+==47419== 
+--47419-- REDIR: 0x368b8176d0 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--47419-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--47419-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--47419-- REDIR: 0x368b8174e0 (index) redirected to 0x4a07c30 (index)
+--47419-- REDIR: 0x368b817560 (strcmp) redirected to 0x4a08570 (strcmp)
+--47419-- Reading syms from /lib64/libc-2.12.so
+--47419--   Considering /usr/lib/debug/.build-id/c7/df056b7c109a41096296cd70702f2eada124b0.debug ..
+--47419--   .. build-id is valid
+--47419-- REDIR: 0x368bc84cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--47419-- REDIR: 0x368bc86f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--47419-- REDIR: 0x368bc82c40 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
+--47419-- REDIR: 0x368bc8aaf0 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
+--47419-- REDIR: 0x368bc84500 (mempcpy) redirected to 0x4a0a020 (mempcpy)
+--47419-- REDIR: 0x368bc7b520 (free) redirected to 0x4a063a9 (free)
+--47419-- REDIR: 0x368bc7a640 (malloc) redirected to 0x4a069ac (malloc)
+--47419-- REDIR: 0x368bc81160 (__GI_strlen) redirected to 0x4a07fb0 (__GI_strlen)
+==47419== Invalid read of size 8
+==47419==    at 0x400BC9: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029DD: tests_SparseArray_copy (test_SparseArray_copy.c:52)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419==  Address 0x4c3c0a8 is 8 bytes inside a block of size 24 free'd
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029B7: tests_SparseArray_copy (test_SparseArray_copy.c:46)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419== 
+==47419== Invalid read of size 8
+==47419==    at 0x400BC9: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029DD: tests_SparseArray_copy (test_SparseArray_copy.c:52)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419==  Address 0x4c3c108 is 8 bytes inside a block of size 24 free'd
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029B7: tests_SparseArray_copy (test_SparseArray_copy.c:46)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419== 
+==47419== Invalid read of size 8
+==47419==    at 0x400BD9: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029DD: tests_SparseArray_copy (test_SparseArray_copy.c:52)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419==  Address 0x4c3c110 is 16 bytes inside a block of size 24 free'd
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029B7: tests_SparseArray_copy (test_SparseArray_copy.c:46)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419== 
+==47419== Invalid read of size 8
+==47419==    at 0x400BC9: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029DD: tests_SparseArray_copy (test_SparseArray_copy.c:52)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419==  Address 0x4c3c168 is 8 bytes inside a block of size 24 free'd
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029B7: tests_SparseArray_copy (test_SparseArray_copy.c:46)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419== 
+==47419== Invalid read of size 8
+==47419==    at 0x400BC9: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029DD: tests_SparseArray_copy (test_SparseArray_copy.c:52)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419==  Address 0x4c3c1c8 is 8 bytes inside a block of size 24 free'd
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029B7: tests_SparseArray_copy (test_SparseArray_copy.c:46)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419== 
+==47419== Invalid read of size 8
+==47419==    at 0x400BD9: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029DD: tests_SparseArray_copy (test_SparseArray_copy.c:52)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419==  Address 0x4c3c1d0 is 16 bytes inside a block of size 24 free'd
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029B7: tests_SparseArray_copy (test_SparseArray_copy.c:46)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419== 
+==47419== Invalid free() / delete / delete[] / realloc()
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029DD: tests_SparseArray_copy (test_SparseArray_copy.c:52)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419==  Address 0x4c3c1c0 is 0 bytes inside a block of size 24 free'd
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029B7: tests_SparseArray_copy (test_SparseArray_copy.c:46)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419== 
+==47419== Invalid read of size 8
+==47419==    at 0x400BD9: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029DD: tests_SparseArray_copy (test_SparseArray_copy.c:52)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419==  Address 0x4c3c170 is 16 bytes inside a block of size 24 free'd
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029B7: tests_SparseArray_copy (test_SparseArray_copy.c:46)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419== 
+==47419== Invalid free() / delete / delete[] / realloc()
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029DD: tests_SparseArray_copy (test_SparseArray_copy.c:52)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419==  Address 0x4c3c160 is 0 bytes inside a block of size 24 free'd
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029B7: tests_SparseArray_copy (test_SparseArray_copy.c:46)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419== 
+==47419== Invalid free() / delete / delete[] / realloc()
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029DD: tests_SparseArray_copy (test_SparseArray_copy.c:52)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419==  Address 0x4c3c100 is 0 bytes inside a block of size 24 free'd
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029B7: tests_SparseArray_copy (test_SparseArray_copy.c:46)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419== 
+==47419== Invalid read of size 8
+==47419==    at 0x400BD9: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029DD: tests_SparseArray_copy (test_SparseArray_copy.c:52)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419==  Address 0x4c3c0b0 is 16 bytes inside a block of size 24 free'd
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029B7: tests_SparseArray_copy (test_SparseArray_copy.c:46)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419== 
+==47419== Invalid free() / delete / delete[] / realloc()
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029DD: tests_SparseArray_copy (test_SparseArray_copy.c:52)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419==  Address 0x4c3c0a0 is 0 bytes inside a block of size 24 free'd
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029B7: tests_SparseArray_copy (test_SparseArray_copy.c:46)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419== 
+==47419== Invalid read of size 8
+==47419==    at 0x400BC9: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x4029DD: tests_SparseArray_copy (test_SparseArray_copy.c:52)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419==  Address 0x4c3c228 is 8 bytes inside a block of size 24 free'd
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x4029B7: tests_SparseArray_copy (test_SparseArray_copy.c:46)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419== 
+==47419== Invalid read of size 8
+==47419==    at 0x400BD9: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x4029DD: tests_SparseArray_copy (test_SparseArray_copy.c:52)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419==  Address 0x4c3c230 is 16 bytes inside a block of size 24 free'd
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x4029B7: tests_SparseArray_copy (test_SparseArray_copy.c:46)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419== 
+==47419== Invalid free() / delete / delete[] / realloc()
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x4029DD: tests_SparseArray_copy (test_SparseArray_copy.c:52)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419==  Address 0x4c3c220 is 0 bytes inside a block of size 24 free'd
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x4029B7: tests_SparseArray_copy (test_SparseArray_copy.c:46)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419== 
+==47419== 
+==47419== HEAP SUMMARY:
+==47419==     in use at exit: 0 bytes in 0 blocks
+==47419==   total heap usage: 17 allocs, 22 frees, 408 bytes allocated
+==47419== 
+==47419== All heap blocks were freed -- no leaks are possible
+==47419== 
+==47419== ERROR SUMMARY: 15 errors from 15 contexts (suppressed: 6 from 6)
+==47419== 
+==47419== 1 errors in context 1 of 15:
+==47419== Invalid free() / delete / delete[] / realloc()
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x4029DD: tests_SparseArray_copy (test_SparseArray_copy.c:52)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419==  Address 0x4c3c220 is 0 bytes inside a block of size 24 free'd
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x4029B7: tests_SparseArray_copy (test_SparseArray_copy.c:46)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419== 
+==47419== 
+==47419== 1 errors in context 2 of 15:
+==47419== Invalid read of size 8
+==47419==    at 0x400BD9: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x4029DD: tests_SparseArray_copy (test_SparseArray_copy.c:52)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419==  Address 0x4c3c230 is 16 bytes inside a block of size 24 free'd
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x4029B7: tests_SparseArray_copy (test_SparseArray_copy.c:46)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419== 
+==47419== 
+==47419== 1 errors in context 3 of 15:
+==47419== Invalid read of size 8
+==47419==    at 0x400BC9: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x4029DD: tests_SparseArray_copy (test_SparseArray_copy.c:52)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419==  Address 0x4c3c228 is 8 bytes inside a block of size 24 free'd
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x4029B7: tests_SparseArray_copy (test_SparseArray_copy.c:46)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419== 
+==47419== 
+==47419== 1 errors in context 4 of 15:
+==47419== Invalid free() / delete / delete[] / realloc()
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029DD: tests_SparseArray_copy (test_SparseArray_copy.c:52)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419==  Address 0x4c3c0a0 is 0 bytes inside a block of size 24 free'd
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029B7: tests_SparseArray_copy (test_SparseArray_copy.c:46)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419== 
+==47419== 
+==47419== 1 errors in context 5 of 15:
+==47419== Invalid read of size 8
+==47419==    at 0x400BD9: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029DD: tests_SparseArray_copy (test_SparseArray_copy.c:52)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419==  Address 0x4c3c0b0 is 16 bytes inside a block of size 24 free'd
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029B7: tests_SparseArray_copy (test_SparseArray_copy.c:46)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419== 
+==47419== 
+==47419== 1 errors in context 6 of 15:
+==47419== Invalid free() / delete / delete[] / realloc()
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029DD: tests_SparseArray_copy (test_SparseArray_copy.c:52)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419==  Address 0x4c3c100 is 0 bytes inside a block of size 24 free'd
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029B7: tests_SparseArray_copy (test_SparseArray_copy.c:46)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419== 
+==47419== 
+==47419== 1 errors in context 7 of 15:
+==47419== Invalid free() / delete / delete[] / realloc()
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029DD: tests_SparseArray_copy (test_SparseArray_copy.c:52)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419==  Address 0x4c3c160 is 0 bytes inside a block of size 24 free'd
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029B7: tests_SparseArray_copy (test_SparseArray_copy.c:46)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419== 
+==47419== 
+==47419== 1 errors in context 8 of 15:
+==47419== Invalid read of size 8
+==47419==    at 0x400BD9: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029DD: tests_SparseArray_copy (test_SparseArray_copy.c:52)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419==  Address 0x4c3c170 is 16 bytes inside a block of size 24 free'd
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029B7: tests_SparseArray_copy (test_SparseArray_copy.c:46)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419== 
+==47419== 
+==47419== 1 errors in context 9 of 15:
+==47419== Invalid free() / delete / delete[] / realloc()
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029DD: tests_SparseArray_copy (test_SparseArray_copy.c:52)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419==  Address 0x4c3c1c0 is 0 bytes inside a block of size 24 free'd
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029B7: tests_SparseArray_copy (test_SparseArray_copy.c:46)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419== 
+==47419== 
+==47419== 1 errors in context 10 of 15:
+==47419== Invalid read of size 8
+==47419==    at 0x400BD9: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029DD: tests_SparseArray_copy (test_SparseArray_copy.c:52)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419==  Address 0x4c3c1d0 is 16 bytes inside a block of size 24 free'd
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029B7: tests_SparseArray_copy (test_SparseArray_copy.c:46)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419== 
+==47419== 
+==47419== 1 errors in context 11 of 15:
+==47419== Invalid read of size 8
+==47419==    at 0x400BC9: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029DD: tests_SparseArray_copy (test_SparseArray_copy.c:52)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419==  Address 0x4c3c1c8 is 8 bytes inside a block of size 24 free'd
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029B7: tests_SparseArray_copy (test_SparseArray_copy.c:46)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419== 
+==47419== 
+==47419== 1 errors in context 12 of 15:
+==47419== Invalid read of size 8
+==47419==    at 0x400BC9: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029DD: tests_SparseArray_copy (test_SparseArray_copy.c:52)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419==  Address 0x4c3c168 is 8 bytes inside a block of size 24 free'd
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BE4: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029B7: tests_SparseArray_copy (test_SparseArray_copy.c:46)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419== 
+==47419== 
+==47419== 1 errors in context 13 of 15:
+==47419== Invalid read of size 8
+==47419==    at 0x400BD9: SparseArray_destroy_sol (<stdin>:49)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029DD: tests_SparseArray_copy (test_SparseArray_copy.c:52)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419==  Address 0x4c3c110 is 16 bytes inside a block of size 24 free'd
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029B7: tests_SparseArray_copy (test_SparseArray_copy.c:46)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419== 
+==47419== 
+==47419== 1 errors in context 14 of 15:
+==47419== Invalid read of size 8
+==47419==    at 0x400BC9: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029DD: tests_SparseArray_copy (test_SparseArray_copy.c:52)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419==  Address 0x4c3c108 is 8 bytes inside a block of size 24 free'd
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029B7: tests_SparseArray_copy (test_SparseArray_copy.c:46)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419== 
+==47419== 
+==47419== 1 errors in context 15 of 15:
+==47419== Invalid read of size 8
+==47419==    at 0x400BC9: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029DD: tests_SparseArray_copy (test_SparseArray_copy.c:52)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419==  Address 0x4c3c0a8 is 8 bytes inside a block of size 24 free'd
+==47419==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==47419==    by 0x400BF0: SparseArray_destroy_sol (<stdin>:50)
+==47419==    by 0x400BD4: SparseArray_destroy_sol (<stdin>:48)
+==47419==    by 0x4029B7: tests_SparseArray_copy (test_SparseArray_copy.c:46)
+==47419==    by 0x402D8C: main (<stdin>:241)
+==47419== 
+--47419-- 
+--47419-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--47419-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==47419== 
+==47419== ERROR SUMMARY: 15 errors from 15 contexts (suppressed: 6 from 6)

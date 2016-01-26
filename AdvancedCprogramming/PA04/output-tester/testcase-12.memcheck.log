@@ -1,0 +1,86 @@
+==47571== Memcheck, a memory error detector
+==47571== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==47571== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==47571== Command: ./a.out images/02-cat-chess.ee264 student-out-11_02-cat-chess.bmp
+==47571== Parent PID: 47569
+==47571== 
+--47571-- 
+--47571-- Valgrind options:
+--47571--    --tool=memcheck
+--47571--    --leak-check=full
+--47571--    --verbose
+--47571--    --log-file=memcheck-11.log
+--47571-- Contents of /proc/version:
+--47571--   Linux version 2.6.32-504.23.4.el6.x86_64 (mockbuild@x86-029.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-9) (GCC) ) #1 SMP Fri May 29 10:16:43 EDT 2015
+--47571-- Arch and hwcaps: AMD64, amd64-sse3-cx16-avx
+--47571-- Page sizes: currently 4096, max supported 4096
+--47571-- Valgrind library directory: /usr/lib64/valgrind
+--47571-- Reading syms from /tmp/.98fEgR/a.out
+--47571-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--47571--    object doesn't have a dynamic symbol table
+--47571-- Reading syms from /lib64/ld-2.12.so
+--47571--   Considering /usr/lib/debug/.build-id/5b/eb2450b75e84ff317c65f22af8b8112c25df63.debug ..
+--47571--   .. build-id is valid
+--47571-- Scheduler: using generic scheduler lock implementation.
+--47571-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==47571== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-47571-by-verma24-on-ecegrid-thin5.ecn.purdue.edu
+==47571== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-47571-by-verma24-on-ecegrid-thin5.ecn.purdue.edu
+==47571== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-47571-by-verma24-on-ecegrid-thin5.ecn.purdue.edu
+==47571== 
+==47571== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==47571== don't want to do, unless you know exactly what you're doing,
+==47571== or are doing some strange experiment):
+==47571==   /usr/lib64/valgrind/../../bin/vgdb --pid=47571 ...command...
+==47571== 
+==47571== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==47571==   /path/to/gdb ./a.out
+==47571== and then give GDB the following command
+==47571==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=47571
+==47571== --pid is optional if only one valgrind process is running
+==47571== 
+--47571-- REDIR: 0x368b8176d0 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--47571-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--47571-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--47571-- REDIR: 0x368b8174e0 (index) redirected to 0x4a07c30 (index)
+--47571-- REDIR: 0x368b817560 (strcmp) redirected to 0x4a08570 (strcmp)
+--47571-- Reading syms from /lib64/libc-2.12.so
+--47571--   Considering /usr/lib/debug/.build-id/c7/df056b7c109a41096296cd70702f2eada124b0.debug ..
+--47571--   .. build-id is valid
+--47571-- REDIR: 0x368bc84cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--47571-- REDIR: 0x368bc86f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--47571-- REDIR: 0x368bc82c40 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
+--47571-- REDIR: 0x368bc7f6e0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--47571-- REDIR: 0x368bd28350 (__strcmp_sse42) redirected to 0x4a084d0 (strcmp)
+--47571-- REDIR: 0x368bc81120 (strlen) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--47571-- REDIR: 0x368bd33620 (__strlen_sse42) redirected to 0x4a07f90 (strlen)
+--47571-- REDIR: 0x368bc8aaf0 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
+--47571-- REDIR: 0x368bc84500 (mempcpy) redirected to 0x4a0a020 (mempcpy)
+--47571-- REDIR: 0x368bc7b520 (free) redirected to 0x4a063a9 (free)
+--47571-- REDIR: 0x368bc7a640 (malloc) redirected to 0x4a069ac (malloc)
+--47571-- REDIR: 0x368bc89670 (memcpy) redirected to 0x4a08b60 (memcpy)
+==47571== 
+==47571== HEAP SUMMARY:
+==47571==     in use at exit: 67,560 bytes in 3 blocks
+==47571==   total heap usage: 4 allocs, 1 frees, 68,128 bytes allocated
+==47571== 
+==47571== Searching for pointers to 3 not-freed blocks
+==47571== Checked 64,744 bytes
+==47571== 
+==47571== 67,560 (24 direct, 67,536 indirect) bytes in 1 blocks are definitely lost in loss record 3 of 3
+==47571==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==47571==    by 0x400AB3: Image_load (answer04.c:77)
+==47571==    by 0x401CA4: main (<stdin>:61)
+==47571== 
+==47571== LEAK SUMMARY:
+==47571==    definitely lost: 24 bytes in 1 blocks
+==47571==    indirectly lost: 67,536 bytes in 2 blocks
+==47571==      possibly lost: 0 bytes in 0 blocks
+==47571==    still reachable: 0 bytes in 0 blocks
+==47571==         suppressed: 0 bytes in 0 blocks
+==47571== 
+==47571== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 6 from 6)
+--47571-- 
+--47571-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--47571-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==47571== 
+==47571== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 6 from 6)

@@ -1,0 +1,10 @@
+
+Testcase 20
+   Testing: SparseNode_build(testind6, testval6, len=4)
+   Student result:
+   (1,5)->(3,3)->(8,4)
+        ->(0,6)
+   Solution result:
+   (1,5)->(3,3)->(8,4)
+        ->(0,6)
+Pass.

@@ -1,0 +1,14 @@
+
+Testcase 41
+   Testing: SparseNode_getMax(a4)
+   Built array a4:
+   (20,59)->(30,3)
+                  ->(25,100)
+          ->(8,-3)->(19,5)
+                          ->(18,2)
+                                  ->(17,7)
+                                          ->(15,-3)->(16,4)
+                  ->(6,20)
+   Student getMax: 30
+   Solution getMax: 30
+Pass.

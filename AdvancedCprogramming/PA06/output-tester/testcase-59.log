@@ -1,0 +1,9 @@
+
+Testcase 59
+   Testing: SparseNode_remove(a7)
+   Built array a7:
+   Remove Node with index 14:
+   Student result after remove:
+   Solution result after remove:
+   Checking if result tree is the same...
+Pass.

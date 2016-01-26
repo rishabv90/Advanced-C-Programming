@@ -1,0 +1,232 @@
+#include <stdio.h>
+//#include <string.h>
+#include <stdlib.h>
+
+
+#include "answer06.h"
+
+
+SparseNode * SparseNode_create(int index, int value)
+{  
+  if(value == 0)
+    {
+      return NULL;//DONT need 0 values
+    }
+
+  SparseNode * n = malloc(sizeof(SparseNode));
+  
+  if (n == NULL)
+    {
+      fprintf(stderr, "\nAllocation failed 1.\n");
+      return (NULL);//error here
+    }
+  // printf("\n%d\n", index);
+  
+  n -> index = index;
+  n -> value = value;
+  n -> right = NULL;
+  n -> left = NULL;
+  
+  return n;
+}
+
+
+SparseNode * SparseArray_insert(SparseNode * array, int index, int value)
+{
+  if(array == NULL)
+    {
+      return(SparseNode_create(index, value));
+    }
+  
+  if((array -> index) == index)
+    {
+      array -> value = value;//relpacing with new value
+    }
+  
+  else if((array -> index) > index)
+    {  
+      array -> left = SparseArray_insert(array->left, index, value);//recursion here 
+    }
+  else
+    {
+      array -> right = SparseArray_insert(array->right, index, value);//recusrion here
+    }
+  /*
+    if((array -> left) == NULL)
+    {
+    SparseNode * p  = SparseNode_create(index, value);
+    array -> left = p;
+    }
+    else
+    {
+    SparseArray_insert(&(array -> left), value);
+    }
+    }
+    
+    else
+    {
+    if((arra -> right) == NULL)
+	{
+	SparseNode * p = SparseNode_create(index, value);
+	
+	}
+	}
+  */
+  
+  return array;
+  
+}
+
+
+SparseNode * SparseArray_build(int * indices, int * values, int length)
+{
+ 
+  SparseNode * Node_root = NULL;
+   int i = 0;
+  
+  for (i = 0; i < length; i++)
+    {
+      Node_root = SparseArray_insert(Node_root, indices[i], values[i]);
+    }
+  
+  return Node_root;
+  
+}
+
+
+void SparseArray_destroy(SparseNode * array)
+{  
+  if (array == NULL)
+    {
+      return;					
+    }
+ 
+      SparseArray_destroy(array->left);
+      SparseArray_destroy(array->right);
+      free(array);
+      array = NULL;     
+}
+
+
+int SparseArray_getMin(SparseNode * array)
+{
+
+  int location = 0;
+  int numleft= 0;
+  int numright = 0;
+  
+  location = array -> index;
+  
+  if(array == NULL)
+    {
+      return 0;//error herererererererererererere
+    }
+  /*
+  if(array -> left == NULL && return array -> right NULL)
+    {
+      // return array -> index;
+    }
+  */
+  
+  numleft = SparseArray_getMin(array->left);
+  numright = SparseArray_getMax(array->right);
+  
+  if(numleft < numright)
+    {//for true
+      if(numleft > location)
+	{//for true
+	  return numleft;
+	}
+      else 
+	{
+	  return location;
+	}
+    }
+  else
+    {
+      if(location > numright)
+	{
+	  return location;
+	}
+      else
+	{
+	  return numright;
+	}
+    }
+}
+
+
+int SparseArray_getMax(SparseNode * array)
+{
+  
+  return 0;
+}
+
+
+SparseNode * SparseArray_getNode(SparseNode * array, int index)
+{
+  
+  if(array == NULL)
+    {
+      return NULL;
+    }
+  
+  if((array -> index) == index)
+    {
+      return array;
+    }
+  
+  SparseNode * location;//up top  maybe???
+  location = SparseArray_getNode(array->left, index);
+  
+  if(location != NULL)
+    {
+      return location;
+    }
+  
+  return SparseArray_getNode(array->right, index);
+}
+
+
+SparseNode * SparseArray_remove(SparseNode * array, int index)
+{
+  
+
+
+
+}
+
+SparseNode * SparseArray_copy(SparseNode * array)
+{//checkfirst  
+  //then malloc the stuff for root
+  //then assign values to each on the new thing
+  //use recursion though
+  if (array == NULL)
+    {
+      return NULL;
+    }
+
+
+  SparseNode * Node_root = malloc(sizeof(SparseNode));
+
+
+  Node_root -> index = array -> index;
+
+  
+  Node_root -> value = array -> value;
+  //use recursion after this for left and right  
+  Node_root -> left = SparseArray_copy(array -> left);
+  Node_root -> right = SparseArray_copy(array -> right);
+      
+
+
+  return Node_root;
+}
+
+
+SparseNode * SparseArray_merge(SparseNode * array_1, SparseNode * array_2)
+{
+ 
+  return NULL;
+}
+

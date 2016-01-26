@@ -1,0 +1,76 @@
+==29280== Memcheck, a memory error detector
+==29280== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==29280== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==29280== Command: ./a.out images/04-nelsonmandela.ee264 student-out-13_04-nelsonmandela.bmp
+==29280== Parent PID: 29279
+==29280== 
+--29280-- 
+--29280-- Valgrind options:
+--29280--    --tool=memcheck
+--29280--    --leak-check=full
+--29280--    --verbose
+--29280--    --log-file=memcheck-13.log
+--29280-- Contents of /proc/version:
+--29280--   Linux version 2.6.32-504.23.4.el6.x86_64 (mockbuild@x86-029.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-9) (GCC) ) #1 SMP Fri May 29 10:16:43 EDT 2015
+--29280-- Arch and hwcaps: AMD64, amd64-sse3-cx16-avx
+--29280-- Page sizes: currently 4096, max supported 4096
+--29280-- Valgrind library directory: /usr/lib64/valgrind
+--29280-- Reading syms from /tmp/.Lip804/a.out
+--29280-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--29280--    object doesn't have a dynamic symbol table
+--29280-- Reading syms from /lib64/ld-2.12.so
+--29280--   Considering /usr/lib/debug/.build-id/5b/eb2450b75e84ff317c65f22af8b8112c25df63.debug ..
+--29280--   .. build-id is valid
+--29280-- Scheduler: using generic scheduler lock implementation.
+--29280-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==29280== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-29280-by-verma24-on-ecegrid-thin5.ecn.purdue.edu
+==29280== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-29280-by-verma24-on-ecegrid-thin5.ecn.purdue.edu
+==29280== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-29280-by-verma24-on-ecegrid-thin5.ecn.purdue.edu
+==29280== 
+==29280== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==29280== don't want to do, unless you know exactly what you're doing,
+==29280== or are doing some strange experiment):
+==29280==   /usr/lib64/valgrind/../../bin/vgdb --pid=29280 ...command...
+==29280== 
+==29280== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==29280==   /path/to/gdb ./a.out
+==29280== and then give GDB the following command
+==29280==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=29280
+==29280== --pid is optional if only one valgrind process is running
+==29280== 
+--29280-- REDIR: 0x368b8176d0 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--29280-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--29280-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--29280-- REDIR: 0x368b8174e0 (index) redirected to 0x4a07c30 (index)
+--29280-- REDIR: 0x368b817560 (strcmp) redirected to 0x4a08570 (strcmp)
+--29280-- Reading syms from /lib64/libc-2.12.so
+--29280--   Considering /usr/lib/debug/.build-id/c7/df056b7c109a41096296cd70702f2eada124b0.debug ..
+--29280--   .. build-id is valid
+--29280-- REDIR: 0x368bc84cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--29280-- REDIR: 0x368bc86f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--29280-- REDIR: 0x368bc82c40 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
+--29280-- REDIR: 0x368bc7f6e0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--29280-- REDIR: 0x368bd28350 (__strcmp_sse42) redirected to 0x4a084d0 (strcmp)
+--29280-- REDIR: 0x368bc81120 (strlen) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--29280-- REDIR: 0x368bd33620 (__strlen_sse42) redirected to 0x4a07f90 (strlen)
+--29280-- REDIR: 0x368bc8aaf0 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
+--29280-- REDIR: 0x368bc84500 (mempcpy) redirected to 0x4a0a020 (mempcpy)
+--29280-- REDIR: 0x368bc7b520 (free) redirected to 0x4a063a9 (free)
+--29280-- REDIR: 0x368bc7a640 (malloc) redirected to 0x4a069ac (malloc)
+--29280-- REDIR: 0x368bc89670 (memcpy) redirected to 0x4a08b60 (memcpy)
+--29280-- REDIR: 0x368bc81160 (__GI_strlen) redirected to 0x4a07fb0 (__GI_strlen)
+--29280-- REDIR: 0x368bc839a0 (memset) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--29280-- REDIR: 0x368bc839e0 (__GI_memset) redirected to 0x4a09a50 (memset)
+==29280== 
+==29280== HEAP SUMMARY:
+==29280==     in use at exit: 0 bytes in 0 blocks
+==29280==   total heap usage: 6 allocs, 6 frees, 100,800 bytes allocated
+==29280== 
+==29280== All heap blocks were freed -- no leaks are possible
+==29280== 
+==29280== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
+--29280-- 
+--29280-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--29280-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==29280== 
+==29280== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)

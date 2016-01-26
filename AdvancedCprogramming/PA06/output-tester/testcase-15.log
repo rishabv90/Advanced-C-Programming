@@ -1,0 +1,14 @@
+
+Testcase 15
+   Testing: SparseNode_build(testind1, testval1, len=7)
+   Student result:
+   (50,4)->(75,-3)->(80,-30)
+                  ->(60,-7)
+         ->(25,7)->(30,80)
+                 ->(12,9)
+   Solution result:
+   (50,4)->(75,-3)->(80,-30)
+                  ->(60,-7)
+         ->(25,7)->(30,80)
+                 ->(12,9)
+Pass.

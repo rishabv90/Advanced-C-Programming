@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+
+
+
+
+
+int main(int argc, char * * argv)
+{
+  //first function
+ int n = 8;
+    char * stra = malloc(sizeof(char) * n);
+    
+    const char *strb = "rishab";
+    strcpy(stra, "hey");    
+    printf("\n\nContonation is :%s\n\n", strcat_ex(&stra, &n, strb));
+    free(stra);
+
+
+
+    //FOR SECOND FUNCTION
+    int len = 3;
+    char *  * string = explode("the\nTurning Test", " \t\v\n\r\f", &len);
+    int i;
+    
+    
+    //const char *delims = " \t\v\n\r\f"; 
+    //printf("NIGGA : %s\n", explode(string, delims, 3));
+
+    for(i=0; i < len; i++)
+      {
+	printf("\n%s\n", string[i]);
+      }
+    free(string);
+
+
+    //FOR THIRD FUNCTION
+
+    int abc = 4;
+    
+    char * * strArr1 = explode("homie how u doing bruhhows it going bruuuuuhh, 264 is craay", " ", &abc);
+    char * str = implode(strArr1, abc, ", ");
+    
+    printf("\n%s\n", str);
+    free(strArr1);
+    free(str);
+
+
+    return EXIT_SUCCESS;
+
+}

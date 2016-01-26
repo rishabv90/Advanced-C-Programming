@@ -1,0 +1,661 @@
+==23621== Memcheck, a memory error detector
+==23621== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==23621== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==23621== Command: ./a.out 70
+==23621== Parent PID: 23619
+==23621== 
+--23621-- 
+--23621-- Valgrind options:
+--23621--    --tool=memcheck
+--23621--    --leak-check=full
+--23621--    --verbose
+--23621--    --log-file=memcheck.log
+--23621-- Contents of /proc/version:
+--23621--   Linux version 2.6.32-504.23.4.el6.x86_64 (mockbuild@x86-029.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-9) (GCC) ) #1 SMP Fri May 29 10:16:43 EDT 2015
+--23621-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--23621-- Page sizes: currently 4096, max supported 4096
+--23621-- Valgrind library directory: /usr/lib64/valgrind
+--23621-- Reading syms from /tmp/.BH5b3I/a.out
+--23621-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--23621--    object doesn't have a dynamic symbol table
+--23621-- Reading syms from /lib64/ld-2.12.so
+--23621--   Considering /usr/lib/debug/.build-id/5b/eb2450b75e84ff317c65f22af8b8112c25df63.debug ..
+--23621--   .. build-id is valid
+--23621-- Scheduler: using generic scheduler lock implementation.
+--23621-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==23621== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-23621-by-verma24-on-ecegrid-thin2.ecn.purdue.edu
+==23621== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-23621-by-verma24-on-ecegrid-thin2.ecn.purdue.edu
+==23621== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-23621-by-verma24-on-ecegrid-thin2.ecn.purdue.edu
+==23621== 
+==23621== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==23621== don't want to do, unless you know exactly what you're doing,
+==23621== or are doing some strange experiment):
+==23621==   /usr/lib64/valgrind/../../bin/vgdb --pid=23621 ...command...
+==23621== 
+==23621== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==23621==   /path/to/gdb ./a.out
+==23621== and then give GDB the following command
+==23621==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=23621
+==23621== --pid is optional if only one valgrind process is running
+==23621== 
+--23621-- REDIR: 0x39220176d0 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--23621-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--23621-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--23621-- REDIR: 0x39220174e0 (index) redirected to 0x4a07c30 (index)
+--23621-- REDIR: 0x3922017560 (strcmp) redirected to 0x4a08570 (strcmp)
+--23621-- Reading syms from /lib64/libc-2.12.so
+--23621--   Considering /usr/lib/debug/.build-id/c7/df056b7c109a41096296cd70702f2eada124b0.debug ..
+--23621--   .. build-id is valid
+--23621-- REDIR: 0x3922484cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--23621-- REDIR: 0x3922486f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--23621-- REDIR: 0x3922482c40 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
+--23621-- REDIR: 0x392248aaf0 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
+--23621-- REDIR: 0x3922484500 (mempcpy) redirected to 0x4a0a020 (mempcpy)
+--23621-- REDIR: 0x392247b520 (free) redirected to 0x4a063a9 (free)
+--23621-- REDIR: 0x392247a640 (malloc) redirected to 0x4a069ac (malloc)
+--23621-- REDIR: 0x3922481160 (__GI_strlen) redirected to 0x4a07fb0 (__GI_strlen)
+==23621== Invalid read of size 8
+==23621==    at 0x400F15: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c048 is 8 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== Invalid read of size 8
+==23621==    at 0x400F15: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c2e8 is 8 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== Invalid read of size 8
+==23621==    at 0x400F15: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c348 is 8 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== Invalid read of size 8
+==23621==    at 0x400F15: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c3a8 is 8 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== Invalid read of size 8
+==23621==    at 0x400F25: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c4d0 is 16 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== Invalid free() / delete / delete[] / realloc()
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c4c0 is 0 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== Invalid read of size 8
+==23621==    at 0x400F25: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c350 is 16 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== Invalid read of size 8
+==23621==    at 0x400F25: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c2f0 is 16 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== Invalid free() / delete / delete[] / realloc()
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c2e0 is 0 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== Invalid read of size 8
+==23621==    at 0x400F25: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c050 is 16 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== Invalid read of size 8
+==23621==    at 0x400F15: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c0a8 is 8 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== Invalid read of size 8
+==23621==    at 0x400F25: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c0b0 is 16 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== Invalid read of size 8
+==23621==    at 0x400F15: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c108 is 8 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== Invalid read of size 8
+==23621==    at 0x400F25: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c110 is 16 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== Invalid read of size 8
+==23621==    at 0x400F15: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c168 is 8 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== Invalid read of size 8
+==23621==    at 0x400F25: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c170 is 16 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== Invalid free() / delete / delete[] / realloc()
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c280 is 0 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== Invalid free() / delete / delete[] / realloc()
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c0a0 is 0 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== Invalid free() / delete / delete[] / realloc()
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c040 is 0 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== 
+==23621== HEAP SUMMARY:
+==23621==     in use at exit: 0 bytes in 0 blocks
+==23621==   total heap usage: 30 allocs, 43 frees, 832 bytes allocated
+==23621== 
+==23621== All heap blocks were freed -- no leaks are possible
+==23621== 
+==23621== ERROR SUMMARY: 39 errors from 19 contexts (suppressed: 6 from 6)
+==23621== 
+==23621== 1 errors in context 1 of 19:
+==23621== Invalid free() / delete / delete[] / realloc()
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c040 is 0 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== 
+==23621== 1 errors in context 2 of 19:
+==23621== Invalid free() / delete / delete[] / realloc()
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c0a0 is 0 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== 
+==23621== 1 errors in context 3 of 19:
+==23621== Invalid read of size 8
+==23621==    at 0x400F25: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c110 is 16 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== 
+==23621== 1 errors in context 4 of 19:
+==23621== Invalid read of size 8
+==23621==    at 0x400F15: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c108 is 8 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== 
+==23621== 1 errors in context 5 of 19:
+==23621== Invalid read of size 8
+==23621==    at 0x400F25: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c0b0 is 16 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== 
+==23621== 1 errors in context 6 of 19:
+==23621== Invalid read of size 8
+==23621==    at 0x400F15: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c0a8 is 8 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== 
+==23621== 1 errors in context 7 of 19:
+==23621== Invalid read of size 8
+==23621==    at 0x400F25: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c050 is 16 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== 
+==23621== 1 errors in context 8 of 19:
+==23621== Invalid free() / delete / delete[] / realloc()
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c2e0 is 0 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== 
+==23621== 1 errors in context 9 of 19:
+==23621== Invalid read of size 8
+==23621==    at 0x400F25: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c2f0 is 16 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== 
+==23621== 1 errors in context 10 of 19:
+==23621== Invalid read of size 8
+==23621==    at 0x400F25: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c350 is 16 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== 
+==23621== 1 errors in context 11 of 19:
+==23621== Invalid read of size 8
+==23621==    at 0x400F15: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c348 is 8 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== 
+==23621== 1 errors in context 12 of 19:
+==23621== Invalid read of size 8
+==23621==    at 0x400F15: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c2e8 is 8 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== 
+==23621== 1 errors in context 13 of 19:
+==23621== Invalid read of size 8
+==23621==    at 0x400F15: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c048 is 8 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== 
+==23621== 4 errors in context 14 of 19:
+==23621== Invalid read of size 8
+==23621==    at 0x400F25: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c170 is 16 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== 
+==23621== 4 errors in context 15 of 19:
+==23621== Invalid read of size 8
+==23621==    at 0x400F15: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c168 is 8 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== 
+==23621== 4 errors in context 16 of 19:
+==23621== Invalid read of size 8
+==23621==    at 0x400F25: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c4d0 is 16 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== 
+==23621== 4 errors in context 17 of 19:
+==23621== Invalid read of size 8
+==23621==    at 0x400F15: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c3a8 is 8 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== 
+==23621== 5 errors in context 18 of 19:
+==23621== Invalid free() / delete / delete[] / realloc()
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c280 is 0 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x400F30: SparseArray_destroy_sol (<stdin>:49)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+==23621== 
+==23621== 5 errors in context 19 of 19:
+==23621== Invalid free() / delete / delete[] / realloc()
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F85: tests_SparseArray_merge (test_SparseArray_merge.c:97)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621==  Address 0x4c3c4c0 is 0 bytes inside a block of size 24 free'd
+==23621==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==23621==    by 0x400F3C: SparseArray_destroy_sol (<stdin>:50)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x400F20: SparseArray_destroy_sol (<stdin>:48)
+==23621==    by 0x402F4C: tests_SparseArray_merge (test_SparseArray_merge.c:88)
+==23621==    by 0x4030D8: main (<stdin>:241)
+==23621== 
+--23621-- 
+--23621-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--23621-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==23621== 
+==23621== ERROR SUMMARY: 39 errors from 19 contexts (suppressed: 6 from 6)

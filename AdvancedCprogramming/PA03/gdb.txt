@@ -1,0 +1,8 @@
+No source file named grep-lite.c.
+Make breakpoint pending on future shared library load? (y or [n]) Please answer y or [n].
+Make breakpoint pending on future shared library load? (y or [n]) Please answer y or [n].
+Make breakpoint pending on future shared library load? (y or [n]) 
+Breakpoint 1 (grep-lite.c:50) pending.
+No symbol "argc" in current context.
+The program is not being run.
+The program is not being run.

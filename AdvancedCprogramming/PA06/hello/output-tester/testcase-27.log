@@ -1,0 +1,10 @@
+
+Testcase 27
+   Testing: SparseNode_destroy(a5)
+   Built array a5:
+   (1,5)->(10,3)->(25,3)
+                        ->(11,-4)
+                ->(8,4)
+                       ->(4,-30)->(7,20)
+   Destroy array...
+Pass.

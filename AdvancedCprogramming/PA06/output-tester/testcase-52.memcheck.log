@@ -1,0 +1,455 @@
+==9074== Memcheck, a memory error detector
+==9074== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==9074== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==9074== Command: ./a.out 51
+==9074== Parent PID: 9073
+==9074== 
+--9074-- 
+--9074-- Valgrind options:
+--9074--    --tool=memcheck
+--9074--    --leak-check=full
+--9074--    --verbose
+--9074--    --log-file=memcheck.log
+--9074-- Contents of /proc/version:
+--9074--   Linux version 2.6.32-504.23.4.el6.x86_64 (mockbuild@x86-029.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-9) (GCC) ) #1 SMP Fri May 29 10:16:43 EDT 2015
+--9074-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--9074-- Page sizes: currently 4096, max supported 4096
+--9074-- Valgrind library directory: /usr/lib64/valgrind
+--9074-- Reading syms from /tmp/.jDC5Zn/a.out
+--9074-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--9074--    object doesn't have a dynamic symbol table
+--9074-- Reading syms from /lib64/ld-2.12.so
+--9074--   Considering /usr/lib/debug/.build-id/5b/eb2450b75e84ff317c65f22af8b8112c25df63.debug ..
+--9074--   .. build-id is valid
+--9074-- Scheduler: using generic scheduler lock implementation.
+--9074-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==9074== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-9074-by-verma24-on-ecegrid-thin2.ecn.purdue.edu
+==9074== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-9074-by-verma24-on-ecegrid-thin2.ecn.purdue.edu
+==9074== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-9074-by-verma24-on-ecegrid-thin2.ecn.purdue.edu
+==9074== 
+==9074== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==9074== don't want to do, unless you know exactly what you're doing,
+==9074== or are doing some strange experiment):
+==9074==   /usr/lib64/valgrind/../../bin/vgdb --pid=9074 ...command...
+==9074== 
+==9074== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==9074==   /path/to/gdb ./a.out
+==9074== and then give GDB the following command
+==9074==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=9074
+==9074== --pid is optional if only one valgrind process is running
+==9074== 
+--9074-- REDIR: 0x39220176d0 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--9074-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--9074-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--9074-- REDIR: 0x39220174e0 (index) redirected to 0x4a07c30 (index)
+--9074-- REDIR: 0x3922017560 (strcmp) redirected to 0x4a08570 (strcmp)
+--9074-- Reading syms from /lib64/libc-2.12.so
+--9074--   Considering /usr/lib/debug/.build-id/c7/df056b7c109a41096296cd70702f2eada124b0.debug ..
+--9074--   .. build-id is valid
+--9074-- REDIR: 0x3922484cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--9074-- REDIR: 0x3922486f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--9074-- REDIR: 0x3922482c40 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
+--9074-- REDIR: 0x392248aaf0 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
+--9074-- REDIR: 0x3922484500 (mempcpy) redirected to 0x4a0a020 (mempcpy)
+--9074-- REDIR: 0x392247b520 (free) redirected to 0x4a063a9 (free)
+--9074-- REDIR: 0x392247a640 (malloc) redirected to 0x4a069ac (malloc)
+--9074-- REDIR: 0x3922481160 (__GI_strlen) redirected to 0x4a07fb0 (__GI_strlen)
+==9074== Invalid read of size 4
+==9074==    at 0x40161B: print_array (test_support_functions.c:107)
+==9074==    by 0x4016F6: print_array (test_support_functions.c:122)
+==9074==    by 0x402B72: tests_SparseArray_remove (test_SparseArray_remove.c:35)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074==  Address 0x4c3c284 is 4 bytes inside a block of size 24 free'd
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400A09: SparseArray_remove (answer06.c:195)
+==9074==    by 0x402B3B: tests_SparseArray_remove (test_SparseArray_remove.c:32)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074== 
+==9074== Invalid read of size 4
+==9074==    at 0x401622: print_array (test_support_functions.c:107)
+==9074==    by 0x4016F6: print_array (test_support_functions.c:122)
+==9074==    by 0x402B72: tests_SparseArray_remove (test_SparseArray_remove.c:35)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074==  Address 0x4c3c280 is 0 bytes inside a block of size 24 free'd
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400A09: SparseArray_remove (answer06.c:195)
+==9074==    by 0x402B3B: tests_SparseArray_remove (test_SparseArray_remove.c:32)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074== 
+==9074== Invalid read of size 4
+==9074==    at 0x40163C: print_array (test_support_functions.c:108)
+==9074==    by 0x4016F6: print_array (test_support_functions.c:122)
+==9074==    by 0x402B72: tests_SparseArray_remove (test_SparseArray_remove.c:35)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074==  Address 0x4c3c280 is 0 bytes inside a block of size 24 free'd
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400A09: SparseArray_remove (answer06.c:195)
+==9074==    by 0x402B3B: tests_SparseArray_remove (test_SparseArray_remove.c:32)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074== 
+==9074== Invalid read of size 4
+==9074==    at 0x40164B: print_array (test_support_functions.c:108)
+==9074==    by 0x4016F6: print_array (test_support_functions.c:122)
+==9074==    by 0x402B72: tests_SparseArray_remove (test_SparseArray_remove.c:35)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074==  Address 0x4c3c284 is 4 bytes inside a block of size 24 free'd
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400A09: SparseArray_remove (answer06.c:195)
+==9074==    by 0x402B3B: tests_SparseArray_remove (test_SparseArray_remove.c:32)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074== 
+==9074== Invalid read of size 8
+==9074==    at 0x401662: print_array (test_support_functions.c:109)
+==9074==    by 0x4016F6: print_array (test_support_functions.c:122)
+==9074==    by 0x402B72: tests_SparseArray_remove (test_SparseArray_remove.c:35)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074==  Address 0x4c3c290 is 16 bytes inside a block of size 24 free'd
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400A09: SparseArray_remove (answer06.c:195)
+==9074==    by 0x402B3B: tests_SparseArray_remove (test_SparseArray_remove.c:32)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074== 
+==9074== Invalid read of size 8
+==9074==    at 0x4016A5: print_array (test_support_functions.c:116)
+==9074==    by 0x4016F6: print_array (test_support_functions.c:122)
+==9074==    by 0x402B72: tests_SparseArray_remove (test_SparseArray_remove.c:35)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074==  Address 0x4c3c288 is 8 bytes inside a block of size 24 free'd
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400A09: SparseArray_remove (answer06.c:195)
+==9074==    by 0x402B3B: tests_SparseArray_remove (test_SparseArray_remove.c:32)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074== 
+==9074== Invalid read of size 8
+==9074==    at 0x401344: SparseNode_size (test_support_functions.c:9)
+==9074==    by 0x40134F: SparseNode_size (test_support_functions.c:9)
+==9074==    by 0x401421: SparseNode_compare (test_support_functions.c:26)
+==9074==    by 0x4015B0: cmp_array (test_support_functions.c:66)
+==9074==    by 0x402BAA: tests_SparseArray_remove (test_SparseArray_remove.c:40)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074==  Address 0x4c3c288 is 8 bytes inside a block of size 24 free'd
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400A09: SparseArray_remove (answer06.c:195)
+==9074==    by 0x402B3B: tests_SparseArray_remove (test_SparseArray_remove.c:32)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074== 
+==9074== Invalid read of size 8
+==9074==    at 0x401357: SparseNode_size (test_support_functions.c:9)
+==9074==    by 0x40134F: SparseNode_size (test_support_functions.c:9)
+==9074==    by 0x401421: SparseNode_compare (test_support_functions.c:26)
+==9074==    by 0x4015B0: cmp_array (test_support_functions.c:66)
+==9074==    by 0x402BAA: tests_SparseArray_remove (test_SparseArray_remove.c:40)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074==  Address 0x4c3c290 is 16 bytes inside a block of size 24 free'd
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400A09: SparseArray_remove (answer06.c:195)
+==9074==    by 0x402B3B: tests_SparseArray_remove (test_SparseArray_remove.c:32)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074== 
+==9074== Invalid read of size 8
+==9074==    at 0x40138C: SparseNode_toArrayHelper (test_support_functions.c:16)
+==9074==    by 0x4013A2: SparseNode_toArrayHelper (test_support_functions.c:16)
+==9074==    by 0x4014AE: SparseNode_compare (test_support_functions.c:37)
+==9074==    by 0x4015B0: cmp_array (test_support_functions.c:66)
+==9074==    by 0x402BAA: tests_SparseArray_remove (test_SparseArray_remove.c:40)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074==  Address 0x4c3c288 is 8 bytes inside a block of size 24 free'd
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400A09: SparseArray_remove (answer06.c:195)
+==9074==    by 0x402B3B: tests_SparseArray_remove (test_SparseArray_remove.c:32)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074== 
+==9074== Invalid read of size 4
+==9074==    at 0x4013AE: SparseNode_toArrayHelper (test_support_functions.c:17)
+==9074==    by 0x4013A2: SparseNode_toArrayHelper (test_support_functions.c:16)
+==9074==    by 0x4014AE: SparseNode_compare (test_support_functions.c:37)
+==9074==    by 0x4015B0: cmp_array (test_support_functions.c:66)
+==9074==    by 0x402BAA: tests_SparseArray_remove (test_SparseArray_remove.c:40)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074==  Address 0x4c3c280 is 0 bytes inside a block of size 24 free'd
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400A09: SparseArray_remove (answer06.c:195)
+==9074==    by 0x402B3B: tests_SparseArray_remove (test_SparseArray_remove.c:32)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074== 
+==9074== Invalid read of size 4
+==9074==    at 0x4013BD: SparseNode_toArrayHelper (test_support_functions.c:18)
+==9074==    by 0x4013A2: SparseNode_toArrayHelper (test_support_functions.c:16)
+==9074==    by 0x4014AE: SparseNode_compare (test_support_functions.c:37)
+==9074==    by 0x4015B0: cmp_array (test_support_functions.c:66)
+==9074==    by 0x402BAA: tests_SparseArray_remove (test_SparseArray_remove.c:40)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074==  Address 0x4c3c284 is 4 bytes inside a block of size 24 free'd
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400A09: SparseArray_remove (answer06.c:195)
+==9074==    by 0x402B3B: tests_SparseArray_remove (test_SparseArray_remove.c:32)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074== 
+==9074== Invalid read of size 8
+==9074==    at 0x4013EA: SparseNode_toArrayHelper (test_support_functions.c:21)
+==9074==    by 0x4013A2: SparseNode_toArrayHelper (test_support_functions.c:16)
+==9074==    by 0x4014AE: SparseNode_compare (test_support_functions.c:37)
+==9074==    by 0x4015B0: cmp_array (test_support_functions.c:66)
+==9074==    by 0x402BAA: tests_SparseArray_remove (test_SparseArray_remove.c:40)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074==  Address 0x4c3c290 is 16 bytes inside a block of size 24 free'd
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400A09: SparseArray_remove (answer06.c:195)
+==9074==    by 0x402B3B: tests_SparseArray_remove (test_SparseArray_remove.c:32)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074== 
+==9074== Invalid read of size 8
+==9074==    at 0x400F21: SparseArray_destroy_sol (<stdin>:48)
+==9074==    by 0x400F2C: SparseArray_destroy_sol (<stdin>:48)
+==9074==    by 0x402BDB: tests_SparseArray_remove (test_SparseArray_remove.c:49)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074==  Address 0x4c3c288 is 8 bytes inside a block of size 24 free'd
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400A09: SparseArray_remove (answer06.c:195)
+==9074==    by 0x402B3B: tests_SparseArray_remove (test_SparseArray_remove.c:32)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074== 
+==9074== Invalid read of size 8
+==9074==    at 0x400F31: SparseArray_destroy_sol (<stdin>:49)
+==9074==    by 0x400F2C: SparseArray_destroy_sol (<stdin>:48)
+==9074==    by 0x402BDB: tests_SparseArray_remove (test_SparseArray_remove.c:49)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074==  Address 0x4c3c290 is 16 bytes inside a block of size 24 free'd
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400A09: SparseArray_remove (answer06.c:195)
+==9074==    by 0x402B3B: tests_SparseArray_remove (test_SparseArray_remove.c:32)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074== 
+==9074== Invalid free() / delete / delete[] / realloc()
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400F48: SparseArray_destroy_sol (<stdin>:50)
+==9074==    by 0x400F2C: SparseArray_destroy_sol (<stdin>:48)
+==9074==    by 0x402BDB: tests_SparseArray_remove (test_SparseArray_remove.c:49)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074==  Address 0x4c3c280 is 0 bytes inside a block of size 24 free'd
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400A09: SparseArray_remove (answer06.c:195)
+==9074==    by 0x402B3B: tests_SparseArray_remove (test_SparseArray_remove.c:32)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074== 
+==9074== 
+==9074== HEAP SUMMARY:
+==9074==     in use at exit: 0 bytes in 0 blocks
+==9074==   total heap usage: 12 allocs, 13 frees, 248 bytes allocated
+==9074== 
+==9074== All heap blocks were freed -- no leaks are possible
+==9074== 
+==9074== ERROR SUMMARY: 15 errors from 15 contexts (suppressed: 6 from 6)
+==9074== 
+==9074== 1 errors in context 1 of 15:
+==9074== Invalid free() / delete / delete[] / realloc()
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400F48: SparseArray_destroy_sol (<stdin>:50)
+==9074==    by 0x400F2C: SparseArray_destroy_sol (<stdin>:48)
+==9074==    by 0x402BDB: tests_SparseArray_remove (test_SparseArray_remove.c:49)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074==  Address 0x4c3c280 is 0 bytes inside a block of size 24 free'd
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400A09: SparseArray_remove (answer06.c:195)
+==9074==    by 0x402B3B: tests_SparseArray_remove (test_SparseArray_remove.c:32)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074== 
+==9074== 
+==9074== 1 errors in context 2 of 15:
+==9074== Invalid read of size 8
+==9074==    at 0x400F31: SparseArray_destroy_sol (<stdin>:49)
+==9074==    by 0x400F2C: SparseArray_destroy_sol (<stdin>:48)
+==9074==    by 0x402BDB: tests_SparseArray_remove (test_SparseArray_remove.c:49)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074==  Address 0x4c3c290 is 16 bytes inside a block of size 24 free'd
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400A09: SparseArray_remove (answer06.c:195)
+==9074==    by 0x402B3B: tests_SparseArray_remove (test_SparseArray_remove.c:32)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074== 
+==9074== 
+==9074== 1 errors in context 3 of 15:
+==9074== Invalid read of size 8
+==9074==    at 0x400F21: SparseArray_destroy_sol (<stdin>:48)
+==9074==    by 0x400F2C: SparseArray_destroy_sol (<stdin>:48)
+==9074==    by 0x402BDB: tests_SparseArray_remove (test_SparseArray_remove.c:49)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074==  Address 0x4c3c288 is 8 bytes inside a block of size 24 free'd
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400A09: SparseArray_remove (answer06.c:195)
+==9074==    by 0x402B3B: tests_SparseArray_remove (test_SparseArray_remove.c:32)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074== 
+==9074== 
+==9074== 1 errors in context 4 of 15:
+==9074== Invalid read of size 8
+==9074==    at 0x4013EA: SparseNode_toArrayHelper (test_support_functions.c:21)
+==9074==    by 0x4013A2: SparseNode_toArrayHelper (test_support_functions.c:16)
+==9074==    by 0x4014AE: SparseNode_compare (test_support_functions.c:37)
+==9074==    by 0x4015B0: cmp_array (test_support_functions.c:66)
+==9074==    by 0x402BAA: tests_SparseArray_remove (test_SparseArray_remove.c:40)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074==  Address 0x4c3c290 is 16 bytes inside a block of size 24 free'd
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400A09: SparseArray_remove (answer06.c:195)
+==9074==    by 0x402B3B: tests_SparseArray_remove (test_SparseArray_remove.c:32)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074== 
+==9074== 
+==9074== 1 errors in context 5 of 15:
+==9074== Invalid read of size 4
+==9074==    at 0x4013BD: SparseNode_toArrayHelper (test_support_functions.c:18)
+==9074==    by 0x4013A2: SparseNode_toArrayHelper (test_support_functions.c:16)
+==9074==    by 0x4014AE: SparseNode_compare (test_support_functions.c:37)
+==9074==    by 0x4015B0: cmp_array (test_support_functions.c:66)
+==9074==    by 0x402BAA: tests_SparseArray_remove (test_SparseArray_remove.c:40)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074==  Address 0x4c3c284 is 4 bytes inside a block of size 24 free'd
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400A09: SparseArray_remove (answer06.c:195)
+==9074==    by 0x402B3B: tests_SparseArray_remove (test_SparseArray_remove.c:32)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074== 
+==9074== 
+==9074== 1 errors in context 6 of 15:
+==9074== Invalid read of size 4
+==9074==    at 0x4013AE: SparseNode_toArrayHelper (test_support_functions.c:17)
+==9074==    by 0x4013A2: SparseNode_toArrayHelper (test_support_functions.c:16)
+==9074==    by 0x4014AE: SparseNode_compare (test_support_functions.c:37)
+==9074==    by 0x4015B0: cmp_array (test_support_functions.c:66)
+==9074==    by 0x402BAA: tests_SparseArray_remove (test_SparseArray_remove.c:40)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074==  Address 0x4c3c280 is 0 bytes inside a block of size 24 free'd
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400A09: SparseArray_remove (answer06.c:195)
+==9074==    by 0x402B3B: tests_SparseArray_remove (test_SparseArray_remove.c:32)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074== 
+==9074== 
+==9074== 1 errors in context 7 of 15:
+==9074== Invalid read of size 8
+==9074==    at 0x40138C: SparseNode_toArrayHelper (test_support_functions.c:16)
+==9074==    by 0x4013A2: SparseNode_toArrayHelper (test_support_functions.c:16)
+==9074==    by 0x4014AE: SparseNode_compare (test_support_functions.c:37)
+==9074==    by 0x4015B0: cmp_array (test_support_functions.c:66)
+==9074==    by 0x402BAA: tests_SparseArray_remove (test_SparseArray_remove.c:40)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074==  Address 0x4c3c288 is 8 bytes inside a block of size 24 free'd
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400A09: SparseArray_remove (answer06.c:195)
+==9074==    by 0x402B3B: tests_SparseArray_remove (test_SparseArray_remove.c:32)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074== 
+==9074== 
+==9074== 1 errors in context 8 of 15:
+==9074== Invalid read of size 8
+==9074==    at 0x401357: SparseNode_size (test_support_functions.c:9)
+==9074==    by 0x40134F: SparseNode_size (test_support_functions.c:9)
+==9074==    by 0x401421: SparseNode_compare (test_support_functions.c:26)
+==9074==    by 0x4015B0: cmp_array (test_support_functions.c:66)
+==9074==    by 0x402BAA: tests_SparseArray_remove (test_SparseArray_remove.c:40)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074==  Address 0x4c3c290 is 16 bytes inside a block of size 24 free'd
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400A09: SparseArray_remove (answer06.c:195)
+==9074==    by 0x402B3B: tests_SparseArray_remove (test_SparseArray_remove.c:32)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074== 
+==9074== 
+==9074== 1 errors in context 9 of 15:
+==9074== Invalid read of size 8
+==9074==    at 0x401344: SparseNode_size (test_support_functions.c:9)
+==9074==    by 0x40134F: SparseNode_size (test_support_functions.c:9)
+==9074==    by 0x401421: SparseNode_compare (test_support_functions.c:26)
+==9074==    by 0x4015B0: cmp_array (test_support_functions.c:66)
+==9074==    by 0x402BAA: tests_SparseArray_remove (test_SparseArray_remove.c:40)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074==  Address 0x4c3c288 is 8 bytes inside a block of size 24 free'd
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400A09: SparseArray_remove (answer06.c:195)
+==9074==    by 0x402B3B: tests_SparseArray_remove (test_SparseArray_remove.c:32)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074== 
+==9074== 
+==9074== 1 errors in context 10 of 15:
+==9074== Invalid read of size 8
+==9074==    at 0x4016A5: print_array (test_support_functions.c:116)
+==9074==    by 0x4016F6: print_array (test_support_functions.c:122)
+==9074==    by 0x402B72: tests_SparseArray_remove (test_SparseArray_remove.c:35)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074==  Address 0x4c3c288 is 8 bytes inside a block of size 24 free'd
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400A09: SparseArray_remove (answer06.c:195)
+==9074==    by 0x402B3B: tests_SparseArray_remove (test_SparseArray_remove.c:32)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074== 
+==9074== 
+==9074== 1 errors in context 11 of 15:
+==9074== Invalid read of size 8
+==9074==    at 0x401662: print_array (test_support_functions.c:109)
+==9074==    by 0x4016F6: print_array (test_support_functions.c:122)
+==9074==    by 0x402B72: tests_SparseArray_remove (test_SparseArray_remove.c:35)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074==  Address 0x4c3c290 is 16 bytes inside a block of size 24 free'd
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400A09: SparseArray_remove (answer06.c:195)
+==9074==    by 0x402B3B: tests_SparseArray_remove (test_SparseArray_remove.c:32)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074== 
+==9074== 
+==9074== 1 errors in context 12 of 15:
+==9074== Invalid read of size 4
+==9074==    at 0x40164B: print_array (test_support_functions.c:108)
+==9074==    by 0x4016F6: print_array (test_support_functions.c:122)
+==9074==    by 0x402B72: tests_SparseArray_remove (test_SparseArray_remove.c:35)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074==  Address 0x4c3c284 is 4 bytes inside a block of size 24 free'd
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400A09: SparseArray_remove (answer06.c:195)
+==9074==    by 0x402B3B: tests_SparseArray_remove (test_SparseArray_remove.c:32)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074== 
+==9074== 
+==9074== 1 errors in context 13 of 15:
+==9074== Invalid read of size 4
+==9074==    at 0x40163C: print_array (test_support_functions.c:108)
+==9074==    by 0x4016F6: print_array (test_support_functions.c:122)
+==9074==    by 0x402B72: tests_SparseArray_remove (test_SparseArray_remove.c:35)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074==  Address 0x4c3c280 is 0 bytes inside a block of size 24 free'd
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400A09: SparseArray_remove (answer06.c:195)
+==9074==    by 0x402B3B: tests_SparseArray_remove (test_SparseArray_remove.c:32)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074== 
+==9074== 
+==9074== 1 errors in context 14 of 15:
+==9074== Invalid read of size 4
+==9074==    at 0x401622: print_array (test_support_functions.c:107)
+==9074==    by 0x4016F6: print_array (test_support_functions.c:122)
+==9074==    by 0x402B72: tests_SparseArray_remove (test_SparseArray_remove.c:35)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074==  Address 0x4c3c280 is 0 bytes inside a block of size 24 free'd
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400A09: SparseArray_remove (answer06.c:195)
+==9074==    by 0x402B3B: tests_SparseArray_remove (test_SparseArray_remove.c:32)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074== 
+==9074== 
+==9074== 1 errors in context 15 of 15:
+==9074== Invalid read of size 4
+==9074==    at 0x40161B: print_array (test_support_functions.c:107)
+==9074==    by 0x4016F6: print_array (test_support_functions.c:122)
+==9074==    by 0x402B72: tests_SparseArray_remove (test_SparseArray_remove.c:35)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074==  Address 0x4c3c284 is 4 bytes inside a block of size 24 free'd
+==9074==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9074==    by 0x400A09: SparseArray_remove (answer06.c:195)
+==9074==    by 0x402B3B: tests_SparseArray_remove (test_SparseArray_remove.c:32)
+==9074==    by 0x4030E4: main (<stdin>:241)
+==9074== 
+--9074-- 
+--9074-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--9074-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==9074== 
+==9074== ERROR SUMMARY: 15 errors from 15 contexts (suppressed: 6 from 6)
